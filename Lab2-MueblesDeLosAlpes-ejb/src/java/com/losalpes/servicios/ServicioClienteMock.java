@@ -10,6 +10,8 @@ import com.losalpes.bos.Cliente;
 import com.losalpes.bos.Departamento;
 import com.losalpes.bos.Pais;
 import com.losalpes.bos.TipoDocumento;
+import com.losalpes.excepciones.AutenticacionException;
+import com.losalpes.excepciones.ClienteExistenteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +48,11 @@ public class ServicioClienteMock implements IServicioCliente {
     }
     
     @Override
-    public void agregarCliente(Cliente cliente) {
+    public void agregarCliente(Cliente cliente) throws ClienteExistenteException {
+        Cliente clienteEncontrado = bucarCliente(cliente.getNumeroDocumento());
+        if (clienteEncontrado != null) {
+            throw new ClienteExistenteException("Cliente con ese número de documento ya existe");
+        }
         clientes.add(cliente);
     }
 
@@ -68,7 +74,7 @@ public class ServicioClienteMock implements IServicioCliente {
     
     private Cliente bucarCliente(String numeroDocumento) {
         for(int e = 0;e<clientes.size();e++){
-            if(clientes.get(e).getNumeroDocumento()==numeroDocumento){
+            if(clientes.get(e).getNumeroDocumento() == numeroDocumento){
                 return clientes.get(e);
             }
         }

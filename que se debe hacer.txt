@@ -2,9 +2,11 @@ Que se debe hacer_:
 
 1. clientes:
 * Registro cliente.
-- combos dependientes en el registro clientes.
-- agregar validacion de los campos obligatorios y que el numero de documento
-no existe.
+- agregar validacion de los campos obligatorios y que el numero de documento no existe. (ya)
+- combos dependientes en el registro clientes (agregar valores), si se quiere mejorar hacer combos...
+
+
+**Pendiente:
 - los clientes pueden ser personas juridicas o nautrales, en caso de ser
 juridica se debe registrar el nit.
 

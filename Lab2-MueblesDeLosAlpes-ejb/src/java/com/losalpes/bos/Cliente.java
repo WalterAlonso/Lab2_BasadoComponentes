@@ -23,6 +23,8 @@ public class Cliente {
     private String profesion;
     private String email;
 
+    private CarroCompra carroCompra;
+
     //-----------------------------------------------------------
     // Constructores
     //-----------------------------------------------------------   
@@ -131,5 +133,13 @@ public class Cliente {
 
     public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
+    }
+    
+    public CarroCompra getCarroCompra() {
+        return carroCompra;
+    }
+
+    public void setCarroCompra(CarroCompra carroCompra) {
+        this.carroCompra = carroCompra;
     }
 }

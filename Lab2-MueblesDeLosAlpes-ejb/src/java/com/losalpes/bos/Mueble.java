@@ -40,12 +40,24 @@ public class Mueble
      * Tipo de mueble.
      */
     private TipoMueble tipo;
-
+  
     /**
      * Indica si el mueble fue seleccionado
      */
     private boolean seleccion;
 
+    private Material material;
+    
+    private Dimension dimension;
+    
+    private Color color;
+    
+    private int peso;
+    
+    private int precio;
+    
+    private int cantidad;
+    
     //-----------------------------------------------------------
     // Constructores
     //-----------------------------------------------------------
@@ -166,5 +178,51 @@ public class Mueble
         this.seleccion = seleccion;
     }
 
+  public Material getMaterial() {
+        return material;
+    }
 
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
+    public Dimension getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(Dimension dimension) {
+        this.dimension = dimension;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
 }

@@ -10,6 +10,7 @@ import com.losalpes.bos.Cliente;
 import com.losalpes.bos.Departamento;
 import com.losalpes.bos.Pais;
 import com.losalpes.bos.TipoDocumento;
+import com.losalpes.excepciones.ClienteExistenteException;
 import com.losalpes.servicios.IServicioCliente;
 import com.losalpes.servicios.ServicioClienteMock;
 import java.util.List;
@@ -81,7 +82,7 @@ public class AdminClienteBean {
     /**
      * Agrega un nuevo mueble al sistema
      */
-    public void agregarCliente() {
+    public void agregarCliente() throws ClienteExistenteException {
         clientes.agregarCliente(cliente);
         cliente = new Cliente();
     }

@@ -6,6 +6,7 @@
 package com.losalpes.servicios;
 
 import com.losalpes.bos.Cliente;
+import com.losalpes.excepciones.ClienteExistenteException;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface IServicioCliente {
     
-    public void agregarCliente(Cliente cliente);
+    public void agregarCliente(Cliente cliente) throws ClienteExistenteException;
 
     public List<Cliente> darClientes();
     

@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/waira2/Downloads/Lab2-MueblesDeLosAlpes/Lab2-MueblesDeLosAlpes-war/web/adminHome.xhtml</file>
-            <file>file:/C:/Users/waira2/Downloads/Lab2-MueblesDeLosAlpes/Lab2-MueblesDeLosAlpes-war/src/java/com/losalpes/beans/AdminClienteBean.java</file>
-            <file>file:/C:/Users/waira2/Downloads/Lab2-MueblesDeLosAlpes/Lab2-MueblesDeLosAlpes-war/web/adminCliente.xhtml</file>
-            <file>file:/C:/Users/waira2/Downloads/Lab2-MueblesDeLosAlpes/Lab2-MueblesDeLosAlpes-war/src/java/com/losalpes/beans/AdminHomeBean.java</file>
-            <file>file:/C:/Users/waira2/Downloads/Lab2-MueblesDeLosAlpes/Lab2-MueblesDeLosAlpes-war/web/catalogo.xhtml</file>
-            <file>file:/C:/Users/waira2/Downloads/Lab2-MueblesDeLosAlpes/Lab2-MueblesDeLosAlpes-war/web/WEB-INF/faces-config.xml</file>
-            <file>file:/C:/Users/waira2/Downloads/Lab2-MueblesDeLosAlpes/Lab2-MueblesDeLosAlpes-war/src/java/com/losalpes/beans/LoginBean.java</file>
-            <file>file:/C:/Users/waira2/Downloads/Lab2-MueblesDeLosAlpes/Lab2-MueblesDeLosAlpes-war/src/java/com/losalpes/beans/CatalogoBean.java</file>
+            <file>file:/E:/Proyectos/cupidos/Lab2_BasadoComponentes/Lab2-MueblesDeLosAlpes-war/src/java/com/losalpes/beans/CatalogoBean.java</file>
+            <file>file:/E:/Proyectos/cupidos/Lab2_BasadoComponentes/Lab2-MueblesDeLosAlpes-war/web/catalogo.xhtml</file>
+            <file>file:/E:/Proyectos/cupidos/Lab2_BasadoComponentes/Lab2-MueblesDeLosAlpes-war/src/java/com/losalpes/beans/AdminClienteBean.java</file>
+            <file>file:/E:/Proyectos/cupidos/Lab2_BasadoComponentes/Lab2-MueblesDeLosAlpes-war/web/adminCliente.xhtml</file>
         </group>
     </open-files>
 </project-private>

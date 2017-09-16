@@ -17,10 +17,6 @@ target/*
 *.ipr
 #Lab2-MueblesDeLosAlpes-ejb
 #Lab2-MueblesDeLosAlpes-war
-Lab2-MueblesDeLosAlpes-ejb/build/
-Lab2-MueblesDeLosAlpes-war/build/
-Lab2-MueblesDeLosAlpes-ejb/dist/
-Lab2-MueblesDeLosAlpes-war/dist/
 
 ### NetBeans ###
 nbproject/private/
@@ -29,6 +25,15 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+Lab2-MueblesDeLosAlpes-ejb/build
+Lab2-MueblesDeLosAlpes-ejb/build/
+Lab2-MueblesDeLosAlpes-ejb/build/*
+Lab2-MueblesDeLosAlpes-ejb/dist
+Lab2-MueblesDeLosAlpes-ejb/dist/
+Lab2-MueblesDeLosAlpes-ejb/dist/*
+Lab2-MueblesDeLosAlpes-war/build/
+Lab2-MueblesDeLosAlpes-war/dist/
+
 
 release.properties
 application-dev.properties
