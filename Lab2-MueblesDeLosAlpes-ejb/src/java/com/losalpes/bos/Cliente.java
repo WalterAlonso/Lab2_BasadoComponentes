@@ -17,7 +17,9 @@ public class Cliente {
     private String telefonoResidencia;
     private String celular;
     private String direccion;
-    private String ciudadResidencia;
+    private Pais pais;
+    private Departamento departamento;
+    private Ciudad ciudad;
     private String profesion;
     private String email;
 
@@ -29,14 +31,16 @@ public class Cliente {
     }
 
     public Cliente(TipoDocumento tipoDocumento, String numeroDocumento, String nombre, String telefonoResidencia,
-            String celular, String direccion, String ciudadResidencia, String profesion, String email) {
+            String celular, String direccion,Pais pais, Departamento departamento, Ciudad ciudad, String profesion, String email) {
         this.tipoDocumento = tipoDocumento;
         this.numeroDocumento = numeroDocumento;
         this.nombre = nombre;
         this.telefonoResidencia = telefonoResidencia;
         this.celular = celular;
         this.direccion = direccion;
-        this.ciudadResidencia = ciudadResidencia;
+        this.pais = pais;
+        this.departamento = departamento;        
+        this.ciudad = ciudad;
         this.profesion = profesion;
         this.email = email;
     }
@@ -89,14 +93,6 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public String getCiudadResidencia() {
-        return ciudadResidencia;
-    }
-
-    public void setCiudadResidencia(String ciudadResidencia) {
-        this.ciudadResidencia = ciudadResidencia;
-    }
-
     public String getProfesion() {
         return profesion;
     }
@@ -111,5 +107,29 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
     }
 }

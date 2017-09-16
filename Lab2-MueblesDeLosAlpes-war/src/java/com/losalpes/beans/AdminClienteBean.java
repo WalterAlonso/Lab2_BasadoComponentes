@@ -5,7 +5,10 @@
  */
 package com.losalpes.beans;
 
+import com.losalpes.bos.Ciudad;
 import com.losalpes.bos.Cliente;
+import com.losalpes.bos.Departamento;
+import com.losalpes.bos.Pais;
 import com.losalpes.bos.TipoDocumento;
 import com.losalpes.servicios.IServicioCliente;
 import com.losalpes.servicios.ServicioClienteMock;
@@ -115,5 +118,49 @@ public class AdminClienteBean {
         }
         return sitems;
     }
+   
+     /**
+     * Devuelve los tipos de documento
+     *
+     * @return sitems Tipos de documentos en el sistema
+     */
+    public SelectItem[] getPaises() {
+        Pais[] tipos = Pais.values();
+        SelectItem[] sitems = new SelectItem[tipos.length];
 
+        for (int i = 0; i < sitems.length; i++) {
+            sitems[i] = new SelectItem(tipos[i]);
+        }
+        return sitems;
+    }
+    
+    /**
+     * Devuelve los tipos de documento
+     *
+     * @return sitems Tipos de documentos en el sistema
+     */
+    public SelectItem[] getDepartamentos() {
+        Departamento[] tipos = Departamento.values();
+        SelectItem[] sitems = new SelectItem[tipos.length];
+
+        for (int i = 0; i < sitems.length; i++) {
+            sitems[i] = new SelectItem(tipos[i]);
+        }
+        return sitems;
+    }
+    
+    /**
+     * Devuelve los tipos de documento
+     *
+     * @return sitems Tipos de documentos en el sistema
+     */
+    public SelectItem[] getCiudades() {
+        Ciudad[] tipos = Ciudad.values();
+        SelectItem[] sitems = new SelectItem[tipos.length];
+
+        for (int i = 0; i < sitems.length; i++) {
+            sitems[i] = new SelectItem(tipos[i]);
+        }
+        return sitems;
+    }
 }

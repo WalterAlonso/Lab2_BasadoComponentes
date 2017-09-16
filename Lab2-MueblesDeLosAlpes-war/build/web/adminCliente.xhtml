@@ -17,146 +17,89 @@
             <!-- Panel para agregar un nuevo cliente -->
             <h:panelGroup>
                 <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
-                    <h:outputLabel for="TxtTipoDocumento"
-                                   value="Tipo de Documento"/>
-
+                    <h:outputLabel for="TxtTipoDocumento" value="Tipo de Documento"/>
                     <h:selectOneMenu value="#{adminClienteBean.cliente.tipoDocumento}">
                         <f:selectItems value="#{adminClienteBean.tiposDocumentos}" />
                     </h:selectOneMenu>
                     <h:message id="tipoDocMsg" for="TxtTipoDocumento" />
                 </h:panelGrid>
-
                 <h:panelGrid>
-                    <h:outputLabel for="TxtNumeroDocumento"
-                                   value="Número de Documento"/>
-                    <h:inputText id="TxtNumeroDocumento"
-                                 size="20"
-                                 maxlength="20"
-                                 value="#{adminClienteBean.cliente.numeroDocumento}"
-                                 label="Número de Documento"
-                                 required="true"
-                                 >
+                    <h:outputLabel for="TxtNumeroDocumento" value="Número de Documento"/>
+                    <h:inputText id="TxtNumeroDocumento" size="20" maxlength="20" value="#{adminClienteBean.cliente.numeroDocumento}"
+                                 label="Número de Documento" required="true">
                         <f:validateLength minimum="1"/>
                     </h:inputText>
                     <h:message id="nuDocMsg" for="TxtNumeroDocumento" />
                 </h:panelGrid>
 
                 <h:panelGrid>
-                    <h:outputLabel for="TxtNombreCompleto"
-                                   value="Nombre Completo"/>
-                    <h:inputText id="TxtNombreCompleto"
-                                 size="20"
-                                 maxlength="20"
-                                 value="#{adminClienteBean.cliente.nombre}"
-                                 label="Nombre Completo"
-                                 required="true"
-                                 >
+                    <h:outputLabel for="TxtNombreCompleto" value="Nombre Completo"/>
+                    <h:inputText id="TxtNombreCompleto" size="20" maxlength="20"  value="#{adminClienteBean.cliente.nombre}"
+                                 label="Nombre Completo" required="true">
                         <f:validateLength minimum="1"/>
                     </h:inputText>
                     <h:message id="nombreMsg" for="TxtNombreCompleto" />
                 </h:panelGrid>
 
                 <h:panelGrid>
-                    <h:outputLabel for="TxtTelefonoResidencia"
-                                   value="Teléfono de residencia"/>
-                    <h:inputText id="TxtTelefonoResidencia"
-                                 size="20"
-                                 maxlength="20"
-                                 value="#{adminClienteBean.cliente.telefonoResidencia}"
-                                 label="Teléfono de residencia"
-                                 required="true"
-                                 >
+                    <h:outputLabel for="TxtTelefonoResidencia" value="Teléfono de residencia"/>
+                    <h:inputText id="TxtTelefonoResidencia" size="20" maxlength="20" value="#{adminClienteBean.cliente.telefonoResidencia}"
+                                 label="Teléfono de residencia" required="true">
                         <f:validateLength minimum="1"/>
                     </h:inputText>
                     <h:message id="telMsg" for="TxtTelefonoResidencia" />
                 </h:panelGrid>
 
                 <h:panelGrid>
-                    <h:outputLabel for="TxtTelefonoCelular"
-                                   value="Teléfono Celular"/>
-                    <h:inputText id="TxtTelefonoCelular"
-                                 size="20"
-                                 maxlength="20"
-                                 label="Teléfono Celular"
-                                 value="#{adminClienteBean.cliente.celular}"
-                                 required="false"
-                                 >
+                    <h:outputLabel for="TxtTelefonoCelular" value="Teléfono Celular"/>
+                    <h:inputText id="TxtTelefonoCelular" size="20" maxlength="20" label="Teléfono Celular"
+                                 value="#{adminClienteBean.cliente.celular}" required="false">
                         <f:validateLength minimum="1"/>
                     </h:inputText>
                     <h:message id="celMsg" for="TxtTelefonoCelular" />
                 </h:panelGrid>
-
-
                 <h:panelGrid>
-                    <h:outputLabel for="TxtDirección"
-                                   value="Dirección"/>
-                    <h:inputText id="TxtDirección"
-                                 size="20"
-                                 maxlength="20"
-                                 label="Dirección"
-                                 value="#{adminClienteBean.cliente.direccion}"
-                                 required="true"
-                                 >
+                    <h:outputLabel for="TxtDirección" value="Dirección"/>
+                    <h:inputText id="TxtDirección" size="20" maxlength="20" label="Dirección"
+                                 value="#{adminClienteBean.cliente.direccion}" required="true">
                         <f:validateLength minimum="1"/>
                     </h:inputText>
                     <h:message id="dirMsg" for="TxtDirección" />
                 </h:panelGrid>
-
-                <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
-                    <h:outputLabel for="TxtCiudadResidencia"
-                                   value="Ciudad de Residencia"/>
-
-                    <h:selectOneMenu value="#{catalogoBean.mueble.tipo}">
-                        <f:selectItems value="#{catalogoBean.tiposMuebles}" />
+                 <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
+                    <h:outputLabel for="TxtPais" value="Pais"/>
+                    <h:selectOneMenu value="#{adminClienteBean.cliente.pais}">
+                        <f:selectItems value="#{adminClienteBean.paises}" />
                     </h:selectOneMenu>
-                    <h:message id="ciudadMsg" for="TxtCiudadResidencia" />
-                </h:panelGrid>
-
+                    <h:message id="paisMsg" for="TxtPais" />
+                </h:panelGrid>                
                 <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
-                    <h:outputLabel for="TxtDepartamento"
-                                   value="Departamento"/>
-
-                    <h:selectOneMenu value="#{catalogoBean.mueble.tipo}">
-                        <f:selectItems value="#{catalogoBean.tiposMuebles}" />
+                    <h:outputLabel for="TxtDepartamento" value="Departamento"/>
+                    <h:selectOneMenu value="#{adminClienteBean.cliente.departamento}">
+                        <f:selectItems value="#{adminClienteBean.departamentos}" />
                     </h:selectOneMenu>
                     <h:message id="depMsg" for="TxtDepartamento" />
                 </h:panelGrid>
-
                 <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
-                    <h:outputLabel for="TxtPais"
-                                   value="Pais"/>
-
-                    <h:selectOneMenu value="#{catalogoBean.mueble.tipo}">
-                        <f:selectItems value="#{catalogoBean.tiposMuebles}" />
+                    <h:outputLabel for="TxtCiudadResidencia" value="Ciudad de Residencia"/>
+                    <h:selectOneMenu value="#{adminClienteBean.cliente.ciudad}">
+                        <f:selectItems value="#{adminClienteBean.ciudades}" />
                     </h:selectOneMenu>
-                    <h:message id="paisMsg" for="TxtPais" />
-                </h:panelGrid>
-
+                    <h:message id="ciudadMsg" for="TxtCiudadResidencia" />
+                </h:panelGrid>                
                 <h:panelGrid>
-                    <h:outputLabel for="TxtProfesion"
-                                   value="Profesión"/>
-                    <h:inputText id="TxtProfesion"
-                                 size="20"
-                                 maxlength="20"
-                                 label="Profesión"
-                                 value="#{adminClienteBean.cliente.profesion}"
-                                 required="true"
-                                 >
+                    <h:outputLabel for="TxtProfesion" value="Profesión"/>
+                    <h:inputText id="TxtProfesion" size="20" maxlength="20" label="Profesión"
+                                 value="#{adminClienteBean.cliente.profesion}" required="true">
                         <f:validateLength minimum="1"/>
                     </h:inputText>
                     <h:message id="proMsg" for="TxtProfesion" />
                 </h:panelGrid>
 
                 <h:panelGrid>
-                    <h:outputLabel for="TxtEmail"
-                                   value="Email"/>
-                    <h:inputText id="TxtEmail"
-                                 size="20"
-                                 maxlength="20"
-                                 label="Email"
-                                 value="#{adminClienteBean.cliente.email}"
-                                 required="true"
-                                 >
+                    <h:outputLabel for="TxtEmail" value="Email"/>
+                    <h:inputText id="TxtEmail" size="20" maxlength="20" label="Email"
+                                 value="#{adminClienteBean.cliente.email}" required="true">
                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                     </h:inputText>
                     <h:message id="emailMsg" for="TxtEmail" />
@@ -201,10 +144,15 @@
                     <h:outputText value="#{file.direccion}" />
                 </p:column>
 
+                <p:column headerText="paìs">
+                    <h:outputText value="#{file.pais}" />
+                </p:column>               
+                <p:column headerText="Departamento">
+                    <h:outputText value="#{file.departamento}" />
+                </p:column>               
                 <p:column headerText="Ciudad">
-                    <h:outputText value="#{file.ciudadResidencia}" />
+                    <h:outputText value="#{file.ciudad}" />
                 </p:column>
-
                 <p:column headerText="Profesión">
                     <h:outputText value="#{file.profesion}" />
                 </p:column>

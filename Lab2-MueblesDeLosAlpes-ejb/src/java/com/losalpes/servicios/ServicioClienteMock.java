@@ -5,10 +5,11 @@
  */
 package com.losalpes.servicios;
 
+import com.losalpes.bos.Ciudad;
 import com.losalpes.bos.Cliente;
-import com.losalpes.bos.Mueble;
+import com.losalpes.bos.Departamento;
+import com.losalpes.bos.Pais;
 import com.losalpes.bos.TipoDocumento;
-import com.losalpes.bos.TipoMueble;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class ServicioClienteMock implements IServicioCliente {
         clientes =new ArrayList<Cliente>();
 
         //Agrega los muebles del sistema
-        clientes.add(new Cliente(TipoDocumento.Cedula, "102445126", "Pepito Perez", "4313022", "3154242542", "DG 85 82 28", "Bogota", "Ingeniero", "pepito@yahoo.com"));
+        clientes.add(new Cliente(TipoDocumento.Cedula, "102445126", "Pepito Perez", "4313022", "3154242542", "DG 85 82 28", Pais.Colombia, Departamento.Bogota, Ciudad.Bogota, "Ingeniero", "pepito@yahoo.com"));
     }
     
     @Override

@@ -1,0 +1,56 @@
+Que se debe hacer_:
+
+1. clientes:
+* Registro cliente.
+- combos dependientes en el registro clientes.
+- agregar validacion de los campos obligatorios y que el numero de documento
+no existe.
+- los clientes pueden ser personas juridicas o nautrales, en caso de ser
+juridica se debe registrar el nit.
+
+* Eliminar clientes:
+- Solo se elimina si no tiene compras.
+- se debe filtrar por numero de documento, nombre o email.
+(el resultado muestra columnas: numero documento, nombre y email).
+- se debe mostrar mensaje de confirmacion antes de ser eliminado.
+
+* consulta
+- filtros para cada campo.
+
+2. admin prod:
+- agregar en el modelo de mueble: Material(madera, metal), dimension(Alto (int), Ancho (int), profundidad(int)), color (Natural, Caoba, Avellana),
+peso (int).
+(al crear peso, dimensiones, tipo, nombre, referencia son obkigaTORIOS).
+
+
+3. proc compra:
+*pagina de catalogo:
+- modelo mueble resumido: referencia, nombre, material, foto.
+*pagina de detalle:
+- ver el detalle del mueble. (Mueble)
+- validar que al pagar este loguieado, si no al login. 
+
+- modelo compra: producto, cantidad y precio.
+- modelo carrito: lista de compras, total.
+- servicio carrito: agregar producto, dar carrito.
+- el carrito y compras del clinte. (hacer listas en cliente)
+
+
+- compra: formapago (pse, baloto, tarjeta credito), referencia (numwero orden), valor, descripcion compra ("2 muebles, codigos (1,2)"), fecha.
+- mostrar el numero de la orden y enviar email.
+- disminuir unidades existentes.
+
+4. Reportes:
+servico: reporte.
+metodo: obtener ventas diarias por tipo mueble.
+metodo: obtener producto mas vendido en un periodo de tiempo por ciudad.
+metdo: 3...
+- agregar reporte 1. (con archivo descargable o en una pagina se muestre).
+- producto mas vendido.
+
+
+
+4. Mejora:
+Que al loguearse lo direccione a pagar que era donde estaba.
+
+
