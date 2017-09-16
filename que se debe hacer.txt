@@ -6,6 +6,17 @@ Que se debe hacer_:
 - combos dependientes en el registro clientes (agregar valores), si se quiere mejorar hacer combos...
 
 
+2. admin prod:
+- agregar en el modelo de mueble: Material(madera, metal), dimension(Alto (int), Ancho (int), profundidad(int)), color (Natural, Caoba, Avellana),
+peso (int).
+(al crear peso, dimensiones, tipo, nombre, referencia son obkigaTORIOS).
+
+- modelo compra: producto, cantidad y precio.
+- modelo carrito: lista de compras, total.
+- servicio carrito: agregar producto, dar carrito.
+- el carrito del clinte. (hacer listas en cliente)
+
+
 **Pendiente:
 - los clientes pueden ser personas juridicas o nautrales, en caso de ser
 juridica se debe registrar el nit.
@@ -19,12 +30,6 @@ juridica se debe registrar el nit.
 * consulta
 - filtros para cada campo.
 
-2. admin prod:
-- agregar en el modelo de mueble: Material(madera, metal), dimension(Alto (int), Ancho (int), profundidad(int)), color (Natural, Caoba, Avellana),
-peso (int).
-(al crear peso, dimensiones, tipo, nombre, referencia son obkigaTORIOS).
-
-
 3. proc compra:
 *pagina de catalogo:
 - modelo mueble resumido: referencia, nombre, material, foto.
@@ -32,13 +37,9 @@ peso (int).
 - ver el detalle del mueble. (Mueble)
 - validar que al pagar este loguieado, si no al login. 
 
-- modelo compra: producto, cantidad y precio.
-- modelo carrito: lista de compras, total.
-- servicio carrito: agregar producto, dar carrito.
-- el carrito y compras del clinte. (hacer listas en cliente)
+- compras del clinte. (hacer listas en cliente)
 
-
-- compra: formapago (pse, baloto, tarjeta credito), referencia (numwero orden), valor, descripcion compra ("2 muebles, codigos (1,2)"), fecha.
+- modelo compra: formapago (pse, baloto, tarjeta credito), referencia (numwero orden), valor, descripcion compra ("2 muebles, codigos (1,2)"), fecha.
 - mostrar el numero de la orden y enviar email.
 - disminuir unidades existentes.
 
