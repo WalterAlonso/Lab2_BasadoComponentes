@@ -1,33 +1,117 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Pagos</title>
+        <h:outputStylesheet name="mueblesheet.css"/>
     </h:head>
     <h:body>
-        <h:form>
-        <h1>Descripcion de la venta</h1>
-        <br />
-        Referencia: 
-        <br />
-        valor:
-        <br/>
-        Descripcion:
-        <br/>
-        <h1>Entidad con la cual realiza el pago</h1>
-        <h3>Tarjeta credito</h3>
-        <h3>PSE</h3>
-        
-        Nombre y Apellidos
-        Numero tarjeta
-        Codigo seguridad
-        Fecha expiracion
-        Cuotas
-        
-        <h:commandButton value="Pagar3" action="#{pagoBean.pagar()}" />
-        <h:commandButton value="Pagar" action="#{pagoBean.pagar}" />
-        </h:form>
+        <center>
+            <h:form>
+                <h1>Descripcion de la venta</h1>
+                <h:panelGrid style="background-color: blue" width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                    <h:outputLabel for="Referencia" value="Referencia:"/>
+                    <h:inputText id="Referencia" size="30" maxlength="30" value="#{pagoBean.referencia}"
+                                 label="Referencia" disabled="true">
+                    </h:inputText>
+                </h:panelGrid>
+                <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                    <h:outputLabel for="valor" value="valor:"/>
+                    <h:inputText id="valor" size="30" value="#{pagoBean.valor}"
+                                 label="valor" disabled="true">
+                        <f:convertNumber type="currency" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                    <h:outputLabel for="Descripcion" value="Descripcion:"/>
+                    <h:inputTextarea  id="Descripcion" rows="3" cols="30" value="#{pagoBean.descripcion}"
+                                      label="Descripcion" disabled="true">                 
+                    </h:inputTextarea >
+                </h:panelGrid>
+
+                <h1>Entidad con la cual realiza el pago</h1>        
+                <h3>Tarjeta credito</h3>
+                <h:commandButton action="#{pagoBean.solicitarTarjetaCredito}" image="resources/img/pago/credito.jpg" />        
+                <h3>PSE</h3>
+                <h:commandButton action="#{pagoBean.solicitarPSE}" image="resources/img/pago/debitoPSE.png" />        
+
+                <br/>
+                <br/>
+
+                <h:panelGroup rendered="#{pagoBean.mostrarSolicitarTarjetaCredito}"> 
+                    <h2>Ingresa los datos de la tarjeta de credito</h2>
+                    <br/>
+                    <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                        <h:outputLabel for="Nombre" value="Nombre y Apellidos:"/>
+                        <h:inputText id="Nombre" size="30" maxlength="40" label="Nombre">
+                            <f:validateRequired />
+                            <f:validateLength minimum="1" />
+                        </h:inputText>
+                        <h:message id="msgNombre" for="Nombre" showSummary="true" showDetail="true" />
+                    </h:panelGrid>
+                    <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                        <h:outputLabel for="Tarjeta" value="Numero tarjeta:"/>
+                        <h:inputText id="Tarjeta" size="30" maxlength="40" label="Tarjeta">
+                        </h:inputText>
+                    </h:panelGrid>
+                    <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                        <h:outputLabel for="Codigo" value="Codigo seguridad:"/>
+                        <h:inputText id="Codigo" size="5" maxlength="10" label="Codigo">
+                        </h:inputText>
+                    </h:panelGrid>
+                    <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                        <h:outputLabel value="Fecha expiracion:"/>
+                        <h:panelGrid width="30%" columns="3" columnClasses="secondColumn,secondColumn,secondColumn">
+                            <h:selectOneMenu>
+                                <f:selectItems value="#{pagoBean.meses}" />
+                            </h:selectOneMenu>
+                            <h:outputLabel value="/"/>
+                            <h:selectOneMenu>
+                                <f:selectItems value="#{pagoBean.anios}" />
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                    </h:panelGrid>
+                    <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                        <h:outputLabel for="Cuotas" value="Cuotas:"/>
+                        <h:inputText id="Cuotas" size="10" maxlength="10" label="Cuotas">
+                        </h:inputText>
+                    </h:panelGrid>                      
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{pagoBean.mostrarSolicitarPSE}">
+                    <h2>Ingresa los datos de PSE</h2>
+                    <br/>
+                    <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                        <h:outputLabel for="NombreApellidos" value="Nombre y Apellidos:"/>
+                        <h:inputText id="NombreApellidos" size="30" maxlength="40" label="NombreApellidos">
+                            <f:validateRequired />
+                            <f:validateLength minimum="1" />
+                        </h:inputText>
+                        <h:message id="msgNombreApellidos" for="NombreApellidos" showSummary="true" showDetail="true" />                        
+                    </h:panelGrid>
+                    <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                        <h:outputLabel value="Banco:"/>
+                        <h:selectOneMenu>
+                            <f:selectItems value="#{pagoBean.bancos}" />
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                </h:panelGroup>
+                <br/>
+                <br/>
+                
+                 <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                        <h:outputLabel for="a" value="Nombre y Apellidos:"/>
+                        <h:inputText id="a" size="30" maxlength="40" label="a">
+                            <f:validateRequired />
+                            <f:validateLength minimum="1" />
+                        </h:inputText>
+                        <h:message id="msga" for="a" showSummary="true" showDetail="true" />                        
+                    </h:panelGrid>
+                <h:commandButton value="Pagar" action="#{pagoBean.pagar}" />
+            </h:form>
+        </center>
     </h:body>
 </html>
 

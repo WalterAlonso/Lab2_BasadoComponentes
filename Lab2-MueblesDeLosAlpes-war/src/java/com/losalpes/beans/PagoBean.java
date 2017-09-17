@@ -5,7 +5,9 @@
  */
 package com.losalpes.beans;
 
+import com.losalpes.bos.Banco;
 import com.losalpes.bos.Compra;
+import com.losalpes.bos.Departamento;
 import com.losalpes.bos.DetalleCarroCompra;
 import com.losalpes.bos.FormaPago;
 import com.losalpes.bos.Usuario;
@@ -17,6 +19,7 @@ import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -38,7 +41,9 @@ public class PagoBean {
     private int valor;
     private String Descripcion;
     private FormaPago formaPago;
-
+    private boolean mostrarSolicitarTarjetaCredito;   
+    private boolean mostrarSolicitarPSE;
+    
     /**
      * Creates a new instance of PagoBean
      */
@@ -108,5 +113,57 @@ public class PagoBean {
     public void setLogguedUser(LoginBean logguedUser) {
         this.logguedUser = logguedUser;
     }
-   
+    
+    public boolean isMostrarSolicitarTarjetaCredito() {
+        return mostrarSolicitarTarjetaCredito;
+    }
+
+    public void setMostrarSolicitarTarjetaCredito(boolean solicitarTarjetaCredito) {
+        this.mostrarSolicitarTarjetaCredito = solicitarTarjetaCredito;
+    }
+
+    public boolean isMostrarSolicitarPSE() {
+        return mostrarSolicitarPSE;
+    }
+
+    public void setMostrarSolicitarPSE(boolean solicitarPSE) {
+        this.mostrarSolicitarPSE = solicitarPSE;
+    }   
+    
+    public void solicitarTarjetaCredito(){
+        this.setMostrarSolicitarPSE(false);
+        this.setMostrarSolicitarTarjetaCredito(true);
+    }
+    
+    public void solicitarPSE(){        
+        this.setMostrarSolicitarTarjetaCredito(false);
+        this.setMostrarSolicitarPSE(true);
+    }
+    
+    public SelectItem[] getMeses() {
+        SelectItem[] sitems = new SelectItem[12];
+        for (int i = 1; i <= sitems.length; i++) {
+            sitems[i-1] = new SelectItem(i);
+        }
+        return sitems;
+    }
+    
+    public SelectItem[] getAnios() {
+        SelectItem[] sitems = new SelectItem[10];
+        int anioInicial = 17;
+        for (int i = 0; i < sitems.length; i++) {
+            sitems[i] = new SelectItem(i+anioInicial);
+        }
+        return sitems;
+    }
+    
+    public SelectItem[] getBancos() {
+        Banco[] tipos = Banco.values();
+        SelectItem[] sitems = new SelectItem[tipos.length];
+
+        for (int i = 0; i < sitems.length; i++) {
+            sitems[i] = new SelectItem(tipos[i]);
+        }
+        return sitems;
+    }
 }
