@@ -46,6 +46,7 @@ public class CarroComprasBean {
         
         //TODO: Borrarlo siguiente, es para testear:
         carroCompra.add(new DetalleCarroCompra(new Mueble("RF1","Silla clásica","Una confortable silla con estilo del siglo XIX.",TipoMueble.Interior, Material.Madera, new Dimension(0, 0, 0), Color.Caoba, 0, 5000, 2, "img/pag/silla.png"), 1));
+        carroCompra.add(new DetalleCarroCompra(new Mueble("RF2","Silla cghglásica","Una confortable silla con estilo del siglo XIX.",TipoMueble.Interior, Material.Madera, new Dimension(0, 0, 0), Color.Caoba, 0, 7000, 2, "img/pag/silla.png"), 1));
     }
     
     public void agregarItem(DetalleCarroCompra item){
