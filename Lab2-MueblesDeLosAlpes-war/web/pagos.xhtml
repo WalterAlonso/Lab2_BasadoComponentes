@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Pagos</title>
         <h:outputStylesheet name="mueblesheet.css"/>
@@ -11,7 +12,7 @@
         <center>
             <h:form>
                 <h1>Descripcion de la venta</h1>
-                <h:panelGrid style="background-color: blue" width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
                     <h:outputLabel for="Referencia" value="Referencia:"/>
                     <h:inputText id="Referencia" size="30" maxlength="30" value="#{pagoBean.referencia}"
                                  label="Referencia" disabled="true">
@@ -100,16 +101,23 @@
                 </h:panelGroup>
                 <br/>
                 <br/>
+               
+                <p:commandButton id="showDialogButton" value="Pagar" 
+                    action="#{pagoBean.pagar()}" update="@form"
+                    oncomplete="PF('dialogaboutDEQ').show()" />
+
+        <p:dialog id="reamrquesDEQ" widgetVar="dialogaboutDEQ" header="Informations"
+            width="400" closable="false" resizable="false" showEffect="clip" 
+            hideEffect="clip" modal="true" >
+            #{pagoBean.mensajeResultadoCompra}
+             <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
+                            <h:outputLabel for="Referencia" value="Numero orden:"/>
+                             <h:outputLabel for="Referencia" value="#{pagoBean.referencia}"/>
+            </h:panelGrid>            
+            <p:commandButton value="Volver al catalogo" action="#{pagoBean.irAlCatalogo}" />    
+        </p:dialog>  
                 
-                 <h:panelGrid width="30%" columns="2" columnClasses="firstColumn,secondColumn">
-                        <h:outputLabel for="a" value="Nombre y Apellidos:"/>
-                        <h:inputText id="a" size="30" maxlength="40" label="a">
-                            <f:validateRequired />
-                            <f:validateLength minimum="1" />
-                        </h:inputText>
-                        <h:message id="msga" for="a" showSummary="true" showDetail="true" />                        
-                    </h:panelGrid>
-                <h:commandButton value="Pagar" action="#{pagoBean.pagar}" />
+    
             </h:form>
         </center>
     </h:body>

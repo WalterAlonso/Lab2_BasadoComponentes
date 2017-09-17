@@ -43,6 +43,7 @@ public class PagoBean {
     private FormaPago formaPago;
     private boolean mostrarSolicitarTarjetaCredito;   
     private boolean mostrarSolicitarPSE;
+    private String mensajeResultadoCompra;
     
     /**
      * Creates a new instance of PagoBean
@@ -91,11 +92,12 @@ public class PagoBean {
     }
     
     public void pagar(){
+        mensajeResultadoCompra = "";
        Usuario usuario = logguedUser.getLoggedUser();        
         Compra compraRealizada = new Compra(FormaPago.CREDITO, referencia, valor, 
                 new Date(), carroCompras.darItems(), usuario.getCliente());
-        compra.agregarCompra(compraRealizada);
-        //MOstrar el popup
+        compra.agregarCompra(compraRealizada);        
+        mensajeResultadoCompra = "La compra a sido exitosa.";
     }
     
     public CarroComprasBean getCarroCompras() {
@@ -140,6 +142,10 @@ public class PagoBean {
         this.setMostrarSolicitarPSE(true);
     }
     
+    public String getMensajeResultadoCompra() {
+        return mensajeResultadoCompra;
+    }
+    
     public SelectItem[] getMeses() {
         SelectItem[] sitems = new SelectItem[12];
         for (int i = 1; i <= sitems.length; i++) {
@@ -165,5 +171,11 @@ public class PagoBean {
             sitems[i] = new SelectItem(tipos[i]);
         }
         return sitems;
+    }
+    
+    
+    public String irAlCatalogo(){
+        //TODO: Arreglar el mapeo hacia donde va
+        return "CatalogoMuebles";
     }
 }
