@@ -5,6 +5,8 @@
  */
 package com.losalpes.bos;
 
+import java.util.List;
+
 /**
  *
  * @author waira2
@@ -22,8 +24,7 @@ public class Cliente {
     private Ciudad ciudad;
     private String profesion;
     private String email;
-
-    private CarroCompra carroCompra;
+    private List<Compra> compras;
 
     //-----------------------------------------------------------
     // Constructores
@@ -134,12 +135,13 @@ public class Cliente {
     public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
     }
-    
-    public CarroCompra getCarroCompra() {
-        return carroCompra;
+
+    public List<Compra> getCompras() {
+        return compras;
     }
 
-    public void setCarroCompra(CarroCompra carroCompra) {
-        this.carroCompra = carroCompra;
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
     }
+
 }

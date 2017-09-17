@@ -58,6 +58,8 @@ public class Mueble
     
     private int cantidad;
     
+    private String foto;
+   
     //-----------------------------------------------------------
     // Constructores
     //-----------------------------------------------------------
@@ -225,4 +227,11 @@ public int getPrecio() {
         this.cantidad = cantidad;
     }
     
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }   
 }

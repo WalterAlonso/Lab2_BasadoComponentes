@@ -14,6 +14,11 @@ public class DetalleCarroCompra {
    
     private int cantidad;
     
+    public DetalleCarroCompra(Mueble mueble, int cantidad) {
+        this.mueble = mueble;
+        this.cantidad = cantidad;                
+    }
+    
     public Mueble getMueble() {
         return mueble;
     }
@@ -30,5 +35,7 @@ public class DetalleCarroCompra {
         this.cantidad = cantidad;
     }
     
-    
+    public int getPrecio() {
+        return this.mueble.getPrecio() * this.cantidad;
+    }
 }

@@ -6,17 +6,16 @@
 package com.losalpes.servicios;
 
 import com.losalpes.bos.CarroCompra;
+import com.losalpes.bos.Compra;
 import com.losalpes.bos.DetalleCarroCompra;
+import java.util.List;
 
 /**
  *
  * @author WALTER
  */
-public interface IServicioCarroCompra {
+public interface IServicioCompra {
     
-    public void agregarItem(DetalleCarroCompra item); 
-    
-    public CarroCompra darCarroCompras(); 
-    
-    public int darPrecioTotal();
+    public Compra agregarCompra(Compra compra);
+    public List<Compra> darCompras();
 }
