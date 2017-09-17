@@ -6,45 +6,51 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet name="mueblesheet.css"/>
     </h:head>
     <h:body>
-        <h:form>
-        Revisa y confirma tu pedido
-           
-        Revisa que tu pedido este completo y a continuacion da clic en pagar.
-        
-        Lista productos
-        <ui:repeat var="producto" value="#{carroComprasBean.carroCompra}">
-            <h:panelGrid columns="3" style="width:50%" columnClasses="logo,detail">
-                <p:graphicImage name="#{producto.mueble.foto}" /> 
-                <p:outputPanel>
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputText value="Referencia:" />
-                        <h:outputText value="#{producto.mueble.referencia}" style="font-weight: bold"/>
+        <center>
+            <h:form>
+                <h1>Revisa y confirma tu pedido</h1>
+                <h3>Revisa que tu pedido este completo y a continuacion da clic en pagar.</h3>
+                <br/>
+                <b>Lista productos</b>
+                <br/>
+                <br/>
+                <ui:repeat var="producto" value="#{carroComprasBean.carroCompra}">
+                    <h:panelGrid columns="3" border="1" style="width:50%; border-color: black;" columnClasses="resumenCompra_firstColumn,resumenCompra_secondColumn,resumenCompra_thirdColumn">
+                        <p:graphicImage name="#{producto.mueble.foto}" value = "#{producto.mueble.foto}"/> 
+                        <p:outputPanel>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Referencia:" />
+                                <h:outputText value="#{producto.mueble.referencia}" style="font-weight: bold"/>
 
-                        <h:outputText value="Nombre:" />
-                        <h:outputText value="#{producto.mueble.nombre}" style="font-weight: bold"/>
+                                <h:outputText value="Nombre:" />
+                                <h:outputText value="#{producto.mueble.nombre}" style="font-weight: bold"/>
 
-                        <h:outputText value="Cantidad:" />
-                        <h:outputText value="#{producto.cantidad}" style="font-weight: bold"/>
-                    </h:panelGrid>
-                </p:outputPanel>
-                <p:outputPanel>
-                    <h:outputText value="Precio:" />
-                    <h:outputText value="#{producto.precio}" style="font-weight: bold"/>
-                </p:outputPanel>
-            </h:panelGrid>    
-            <h:panelGrid columns="3" style="width:50%" columnClasses="logo,detail">
-                <p:outputPanel></p:outputPanel>
-                <p:outputPanel></p:outputPanel>
-                  <p:outputPanel>
-                    <h:outputText value="Precio Total:" />
-                    <h:outputText value="#{carroComprasBean.darPrecioTotal()}" style="font-weight: bold"/>
-                </p:outputPanel>
-            </h:panelGrid>
-	</ui:repeat>    
-        <h:commandButton value="Pagar" action="#{carroComprasBean.irAPagar}" />
-        </h:form>
+                                <h:outputText value="Cantidad:" />
+                                <h:outputText value="#{producto.cantidad}" style="font-weight: bold"/>
+                            </h:panelGrid>
+                        </p:outputPanel>
+                        <p:outputPanel >
+                            <h:outputText value="Precio:" />
+                            <h:outputText value="#{producto.precio}" style="font-weight: bold"/>
+                        </p:outputPanel>
+                    </h:panelGrid>                  
+                </ui:repeat>    
+                <h:panelGrid columns="2" border="1" style="width:50%;border-color: black;" columnClasses="resumenCompra_TwoColumn,resumenCompra_firstColumn">
+                    <p:outputPanel style="text-align: center">
+                        <h:outputText value="Precio Total:" />                   
+                    </p:outputPanel>
+                    <p:outputPanel >
+                        <h:outputText value="#{carroComprasBean.darPrecioTotal()}" style="font-weight: bold"/>
+                    </p:outputPanel>
+                </h:panelGrid>
+                <br/>
+                <br/>
+                <h:commandButton value="Pagar" action="#{carroComprasBean.irAPagar}" />
+            </h:form>
+        </center>
     </h:body>
 </html>
 

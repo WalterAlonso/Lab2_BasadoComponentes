@@ -65,3 +65,16 @@ input, textarea, select
 .secondColumnCombo{
     width: 0%;
 }
+
+.resumenCompra_firstColumn{
+    width: 33%;
+}
+.resumenCompra_secondColumn {
+    width: 33%;
+}
+.resumenCompra_TwoColumn {
+    width: 66%;
+}
+.resumenCompra_thirdColumn {
+    width: 33%;
+}
