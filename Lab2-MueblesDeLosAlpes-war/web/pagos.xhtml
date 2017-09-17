@@ -6,7 +6,28 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form>
+        <h1>Descripcion de la venta</h1>
+        <br />
+        Referencia: 
+        <br />
+        valor:
+        <br/>
+        Descripcion:
+        <br/>
+        <h1>Entidad con la cual realiza el pago</h1>
+        <h3>Tarjeta credito</h3>
+        <h3>PSE</h3>
+        
+        Nombre y Apellidos
+        Numero tarjeta
+        Codigo seguridad
+        Fecha expiracion
+        Cuotas
+        
+        <h:commandButton value="Pagar3" action="#{pagoBean.pagar()}" />
+        <h:commandButton value="Pagar" action="#{pagoBean.pagar}" />
+        </h:form>
     </h:body>
 </html>
 

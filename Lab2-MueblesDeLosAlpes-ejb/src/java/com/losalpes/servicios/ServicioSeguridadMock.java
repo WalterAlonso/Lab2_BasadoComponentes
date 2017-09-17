@@ -12,6 +12,12 @@
 
 package com.losalpes.servicios;
 
+import com.losalpes.bos.Ciudad;
+import com.losalpes.bos.Cliente;
+import com.losalpes.bos.Departamento;
+import com.losalpes.bos.DetalleCarroCompra;
+import com.losalpes.bos.Pais;
+import com.losalpes.bos.TipoDocumento;
 import com.losalpes.bos.TipoUsuario;
 import com.losalpes.bos.Usuario;
 import com.losalpes.excepciones.AutenticacionException;
@@ -45,9 +51,11 @@ public class ServicioSeguridadMock implements IServicioSeguridad
         //Inicializa el arreglo que contiene los usuarios
         usuarios=new ArrayList<Usuario>();
 
+        Usuario usuario = new Usuario("client","clientclient",TipoUsuario.CLIENTE);
+        usuario.setCliente(new Cliente(TipoDocumento.Cedula, "102445126", "Pepito Perez", "4313022", "3154242542", "DG 85 82 28", Pais.Colombia, Departamento.Bogota, Ciudad.Bogota, "Ingeniero", "pepito@yahoo.com"));
         //Agrega usuarios al sistema
         usuarios.add(new Usuario("admin","adminadmin",TipoUsuario.ADMINISTRADOR));
-        usuarios.add(new Usuario("client","clientclient",TipoUsuario.CLIENTE));
+        usuarios.add(usuario);
 
     }
 
@@ -84,5 +92,13 @@ public class ServicioSeguridadMock implements IServicioSeguridad
 
         return u;
     }
-
+    
+    @Override
+    public Usuario darUsuario(String nombreUsuario) {
+         for (Usuario usuario : usuarios) {
+            if(usuario.getNombre().equals(nombreUsuario))
+                return usuario;
+        }
+        return null;
+    }
 }

@@ -12,6 +12,8 @@
 
 package com.losalpes.beans;
 
+import java.io.IOException;
+import javax.servlet.ServletException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,7 +65,7 @@ public class LoginBeanTest
      * Realiza una prueba para verificar la correcta autenticación de un usuario de tipo Administrador
      */
     @Test
-    public void testLoginAdmin()
+    public void testLoginAdmin() throws ServletException, IOException
     {
         LoginBean instance = new LoginBean();
         instance.setUsuario("admin");
@@ -81,7 +83,7 @@ public class LoginBeanTest
      * Realiza una prueba para verificar la correcta autenticación de un usuario de tipo Cliente
      */
     @Test
-    public void testLoginClient()
+    public void testLoginClient() throws ServletException, IOException
     {
         LoginBean instance = new LoginBean();
         instance.setUsuario("client");

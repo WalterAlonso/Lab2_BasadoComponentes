@@ -16,14 +16,20 @@ import com.losalpes.bos.Usuario;
 import com.losalpes.excepciones.AutenticacionException;
 import com.losalpes.servicios.IServicioSeguridad;
 import com.losalpes.servicios.ServicioSeguridadMock;
+import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Managed bean encargado de la autenticación en el sistema
  *
  */
+@Named(value = "loginBean")
 @ManagedBean
 public class LoginBean {
 
@@ -50,6 +56,16 @@ public class LoginBean {
      */
     private boolean error;
 
+    @ManagedProperty(value="#{param.from}")
+    private String from;
+    
+    public String getFrom() {
+        return from;
+    }
+ 
+    public void setFrom(String from) {
+        this.from = from;
+    }
     //-----------------------------------------------------------
     // Constructor
     //-----------------------------------------------------------
@@ -69,14 +85,20 @@ public class LoginBean {
      *
      * @return tipoUsuario Devuelve el tipo de usuario
      */
-    public String login() {
-
+    public String login() throws ServletException, IOException {        
         try {
             Usuario user = servicio.login(usuario, contraseña);
-            if (user.getTipo() == TipoUsuario.ADMINISTRADOR) {
-                return "adminHome";
-            } else {
+            if (user == null) {
                 return "";
+            }
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("USUARIO", usuario);                 
+            if (user.getTipo() == TipoUsuario.ADMINISTRADOR) {                
+                return "adminHome";
+            } else {                
+                 if(from != null){
+                    FacesContext.getCurrentInstance().getExternalContext().redirect(from);
+                }
+                return "resumenCompra";
             }
         } catch (AutenticacionException ex) {
             error = true;
@@ -86,6 +108,20 @@ public class LoginBean {
         }
     }
 
+    public void logout() throws ServletException, IOException{
+        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        request.getSession().invalidate();
+        request.logout();
+        FacesContext.getCurrentInstance().getExternalContext().redirect("index");
+    }
+ 
+    public Usuario getLoggedUser(){
+        String user = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("USUARIO").toString();         
+        //if(request.getUserPrincipal() != null) {
+            //String name = request.getUserPrincipal().getName();
+            return servicio.darUsuario(user);        
+    } 
+    
     //-----------------------------------------------------------
     // Getters y setters
     //-----------------------------------------------------------

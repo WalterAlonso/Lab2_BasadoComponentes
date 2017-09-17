@@ -75,7 +75,6 @@ public class ServicioCompraMock implements IServicioCompra {
     {
         compra.setNumeroOrden(generadorNumeroOrden);
         compras.add(compra);
-        generadorNumeroOrden ++;
         return compra;
     }
 
@@ -87,5 +86,10 @@ public class ServicioCompraMock implements IServicioCompra {
     public List<Compra> darCompras()
     {
         return compras;
+    }
+    
+    public int darNumeroOrden() {
+        generadorNumeroOrden++;
+        return generadorNumeroOrden;
     }
 }

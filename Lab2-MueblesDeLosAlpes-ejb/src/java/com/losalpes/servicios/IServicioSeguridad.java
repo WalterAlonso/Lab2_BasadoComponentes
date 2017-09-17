@@ -29,5 +29,5 @@ public interface IServicioSeguridad
      * @return usuario Retorna el objeto que contiene la información del usuario que ingreso al sistema.
      */
     public Usuario login(String nombre, String contraseña)throws AutenticacionException;
-
+    public Usuario darUsuario(String nombreUsuario);
 }

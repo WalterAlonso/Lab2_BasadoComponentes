@@ -86,6 +86,23 @@ public class Mueble
         this.descripcion = descripcion;
         this.tipo = tipo;
     }
+    
+    public Mueble(String referencia, String nombre, String descripcion, TipoMueble tipo,
+            Material material, Dimension dimension, Color color, int peso, int precio, int cantidad,
+            String foto)
+    {
+        this.referencia = referencia;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.tipo = tipo;
+        this.material = material;
+        this.dimension = dimension;
+        this.color = color;
+        this.peso = peso;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.foto = foto;
+    }
 
     //-----------------------------------------------------------
     // Getters y setters

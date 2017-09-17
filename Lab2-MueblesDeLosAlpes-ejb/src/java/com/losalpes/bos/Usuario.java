@@ -36,6 +36,8 @@ public class Usuario
      */
     private TipoUsuario tipo;
 
+    private Cliente cliente;
+    
     //-----------------------------------------------------------
     // Constructores
     //-----------------------------------------------------------
@@ -120,4 +122,13 @@ public class Usuario
         this.tipo = tipo;
     }
 
+    public Cliente getCliente()
+    {
+        return cliente;
+    }
+    
+    public void setCliente(Cliente cliente)
+    {
+        this.cliente = cliente;
+    }
 }

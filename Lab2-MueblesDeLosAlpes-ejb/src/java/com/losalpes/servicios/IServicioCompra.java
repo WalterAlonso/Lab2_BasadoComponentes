@@ -18,4 +18,5 @@ public interface IServicioCompra {
     
     public Compra agregarCompra(Compra compra);
     public List<Compra> darCompras();
+    public int darNumeroOrden();
 }

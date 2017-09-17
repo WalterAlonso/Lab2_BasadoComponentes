@@ -14,6 +14,12 @@ public class Dimension {
     private int ancho;
     private int profundidad;
 
+    public Dimension(int alto, int ancho, int profundidad) {
+        this.alto = alto;
+        this.ancho = ancho;
+        this.profundidad = profundidad;
+    }
+    
     public int getAlto() {
         return alto;
     }
