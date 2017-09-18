@@ -12,13 +12,17 @@ import com.losalpes.bos.DetalleCarroCompra;
 import com.losalpes.bos.FormaPago;
 import com.losalpes.bos.Usuario;
 import com.losalpes.servicios.IServicioCompra;
+import com.losalpes.servicios.IServicioSeguridad;
 import com.losalpes.servicios.ServicioCompraMock;
+import com.losalpes.servicios.ServicioSeguridadMock;
 import java.util.Date;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 /**
@@ -32,10 +36,21 @@ public class PagoBean {
     @ManagedProperty("#{carroComprasBean}")
     private CarroComprasBean carroCompras;
 
-    @ManagedProperty("#{loginBean}")
-    private LoginBean logguedUser;
-    
-    private IServicioCompra compra;
+    @ManagedProperty("#{compraBean}")
+    private CompraBean compra;    
+
+    public CompraBean getCompra() {
+        return compra;
+    }
+
+    public void setCompra(CompraBean compra) {
+        this.compra = compra;
+    }
+//
+//    public CompraBean getCompra() {
+//        return compra;
+//    }
+    private IServicioSeguridad usuarios;
     
     private int referencia;   
     private int valor;
@@ -48,12 +63,12 @@ public class PagoBean {
     /**
      * Creates a new instance of PagoBean
      */
-    public PagoBean() {
-        compra = new ServicioCompraMock();
+    public PagoBean() {        
+        usuarios = new ServicioSeguridadMock();
     }
     
-     public int getReferencia() {
-        return compra.darNumeroOrden();
+     public int getReferencia() {        
+        return compra.getCompra().darNumeroOrden();
     }
 
     public void setReferencia(int referencia) {
@@ -93,10 +108,12 @@ public class PagoBean {
     
     public void pagar(){
         mensajeResultadoCompra = "";
-       Usuario usuario = logguedUser.getLoggedUser();        
-        Compra compraRealizada = new Compra(FormaPago.CREDITO, referencia, valor, 
-                new Date(), carroCompras.darItems(), usuario.getCliente());
-        compra.agregarCompra(compraRealizada);        
+        String user = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("USUARIO").toString();                 
+       Usuario usuario = usuarios.darUsuario(user);
+       this.formaPago= this.formaPago == null ? FormaPago.PSE : this.formaPago;
+        Compra compraRealizada = new Compra(this.formaPago, referencia, valor, 
+                new Date(), carroCompras.darItems(), usuario.getCliente());        
+        compra.getCompra().agregarCompra(compraRealizada);        
         mensajeResultadoCompra = "La compra a sido exitosa.";
     }
     
@@ -104,18 +121,10 @@ public class PagoBean {
         return carroCompras;
     }
 
-    public LoginBean getLogguedUser() {
-        return logguedUser;
-    }  
-   
     public void setCarroCompras(CarroComprasBean carroCompras) {
         this.carroCompras = carroCompras;
     }
 
-    public void setLogguedUser(LoginBean logguedUser) {
-        this.logguedUser = logguedUser;
-    }
-    
     public boolean isMostrarSolicitarTarjetaCredito() {
         return mostrarSolicitarTarjetaCredito;
     }
@@ -133,11 +142,13 @@ public class PagoBean {
     }   
     
     public void solicitarTarjetaCredito(){
+        this.formaPago = FormaPago.CREDITO;
         this.setMostrarSolicitarPSE(false);
         this.setMostrarSolicitarTarjetaCredito(true);
     }
     
     public void solicitarPSE(){        
+        this.formaPago = FormaPago.PSE;
         this.setMostrarSolicitarTarjetaCredito(false);
         this.setMostrarSolicitarPSE(true);
     }

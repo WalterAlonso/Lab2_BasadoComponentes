@@ -20,6 +20,7 @@ import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletException;
@@ -30,6 +31,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  */
 @Named(value = "loginBean")
+@SessionScoped
 @ManagedBean
 public class LoginBean {
 
@@ -55,17 +57,14 @@ public class LoginBean {
      * Determina si existe error o no
      */
     private boolean error;
-
-    @ManagedProperty(value="#{param.from}")
-    private String from;
     
-    public String getFrom() {
-        return from;
-    }
- 
-    public void setFrom(String from) {
-        this.from = from;
-    }
+//    public String getFrom() {
+//        return from;
+//    }
+// 
+//    public void setFrom(String from) {
+//        this.from = from;
+//    }
     //-----------------------------------------------------------
     // Constructor
     //-----------------------------------------------------------
@@ -95,9 +94,9 @@ public class LoginBean {
             if (user.getTipo() == TipoUsuario.ADMINISTRADOR) {                
                 return "adminHome";
             } else {                
-                 if(from != null){
-                    FacesContext.getCurrentInstance().getExternalContext().redirect(from);
-                }
+//                 if(from != null){
+//                    FacesContext.getCurrentInstance().getExternalContext().redirect(from);
+//                }
                 return "resumenCompra";
             }
         } catch (AutenticacionException ex) {

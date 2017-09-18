@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>      
+        <p:growl id="msgs" showDetail="true" />
+
+        <h3 style="margin-top:0">Reportes</h3>
+        <p:tabView>
+            <p:tab title="Ventas diarias por tipo mueble">
+                filtros:
+                fecha inicio:
+                fecha fin:
+                ciudad : todas o de a una
+
+            </p:tab>
+            <p:tab title="mueble mas vendido por ciudad">
+                filtros:
+                fecha inicio:
+                fecha fin:
+                ciudad : todas o de a una
+                tipo mueble:
+                Nombre:
+
+            </p:tab>
+            <p:tab title="Compras de cliente">
+                <h:form id="formComprasCliente">
+                    <h:panelGrid id="grid" columns="3" columnClasses="resumenCompra_firstColumn,resumenCompra_secondColumn,resumenCompra_thirdColumn">
+                        <p:outputPanel>
+                            <p:outputLabel for="NumeroDocumento" value="Numero documento:" />                   
+                        </p:outputPanel>
+                        <p:inputText required="true" id="NumeroDocumento" size="30" maxlength="30" value="#{reporteBean.numeroDocumento}"
+                                     label="NumeroDocumento">                            
+                        </p:inputText>                        
+                        <p:commandButton update="reporteComprasCliente" action="#{reporteBean.buscarComprasCliente}" value="Buscar" />
+                        <p:messages  autoUpdate="true" id="msgNumeroDocumento" for="NumeroDocumento"  />                        
+                    </h:panelGrid>
+
+
+ <!--<ui:repeat id="reporteComprasCliente" var="comprasClie" value="#{reporteBean.comprasCliente}">
+      <h:panelGrid columns="3" >                                
+            <p:outputPanel>
+                <h:outputText value="Fecha compra:" />
+                <h:outputText value="#{comprasClie.fechaCompra}" />
+            </p:outputPanel>                             
+            <p:outputPanel>
+                <h:outputText value="Valor:" />
+                  <h:outputText value="#{comprasClie.valor}" />
+            </p:outputPanel>   
+          <p:outputPanel>
+                <h:outputText value="Forma pago:" />
+                  <h:outputText value="#{comprasClie.formapago}" />
+            </p:outputPanel>   
+        </h:panelGrid>       
+       <p:dataTable
+id="reporteComprasClie"
+value="comprasClie.detalleCompra"
+var="comprasss"
+scrollable="false"
+scrollHeight="100px"
+paginator="true"
+paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+resizableColumns="true"
+rows="10">
+           
+            <p:column headerText="Referencia">
+            <h:outputText value="#{comprasss.mueble.referencia}" />
+</p:column>
+           
+           
+       </p:dataTable>
+     
+     
+  
+ </ui:repeat>
+                    -->
+
+
+
+
+                    <p:dataTable
+                        id="reporteComprasCliente"
+                        value="#{reporteBean.comprasCliente}"
+                        var="compraCliente"
+                        scrollable="false"
+                        scrollHeight="100px"
+                        paginator="true"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        resizableColumns="true"
+                        rows="10">
+
+                        <p:column headerText="Fecha Compra" sortBy="#{compraCliente.fechaCompra}">
+                            <h:outputText value="#{compraCliente.fechaCompra}" />
+                        </p:column>
+
+                        <p:column headerText="Valor">
+                            <h:outputText value="#{compraCliente.valor}" />
+                        </p:column>
+
+                        <p:column headerText="Forma pago">
+                            <h:outputText value="#{compraCliente.formapago}" />
+                        </p:column>
+
+                        <p:column headerText="Muebles">
+                            <ui:repeat var="pro" value="#{compraCliente.detalleCompra}">
+                                <h:panelGrid columns="2" >                                
+                                    <p:outputPanel>
+                                        <h:outputText value="Referencia:" />
+                                        <h:outputText value="#{pro.mueble.referencia}" style="font-weight: bold"/>
+                                    </p:outputPanel>                             
+                                    <p:outputPanel>
+                                        <h:outputText value="Nombre:" />
+                                        <h:outputText value="#{pro.mueble.nombre}" style="font-weight: bold"/>
+                                    </p:outputPanel>                             
+                                </h:panelGrid>       
+                            </ui:repeat>
+                        </p:column>
+                    </p:dataTable>-->
+                </h:form>              
+            </p:tab>
+        </p:tabView>
+    </h:body>
+</html>
+
