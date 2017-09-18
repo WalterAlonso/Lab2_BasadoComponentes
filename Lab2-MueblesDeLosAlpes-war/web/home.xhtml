@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : catalogo
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/main-template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:param name="titulo" value="Catálogo de muebles" />
+    <h:outputLabel for="TxtTitle" value="Catálogo de muebles" style="font-size:20px"/>
+    <ui:define name="body">
+        <h:commandButton value = "Iniciar Sesión"  actionListener="#{homeBean.irIndex()}"/>      
+        <ui:repeat var="mueble" value="#{homeBean.muebles}">
+            <h:panelGrid columns="3" border="1" style="width:50%; border-color: black;" columnClasses="resumenCompra_firstColumn,resumenCompra_secondColumn,resumenCompra_thirdColumn">
+
+                <p:outputPanel>
+                    <p:graphicImage name="#{mueble.foto}" value = "#{mueble.foto}"/> 
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputText value="Referencia:" />
+                        <h:outputText value="#{mueble.referencia}" style="font-weight: bold"/>
+
+                        <h:outputText value="Nombre:" />
+                        <h:outputText value="#{mueble.nombre}" style="font-weight: bold"/>
+
+                        <h:outputText value="Cantidad:" />
+                        <h:outputText value="#{mueble.cantidad}" style="font-weight: bold"/>
+                    </h:panelGrid>
+                </p:outputPanel>
+                <p:outputPanel >
+                    <h:outputText value="Precio:" />
+                    <h:outputText value="#{mueble.precio}" style="font-weight: bold"/>
+                </p:outputPanel>
+                <p:outputPanel >
+                    <h:commandButton value = "Añadir a Carro"  actionListener="#{homeBean.agregarItem(mueble)}"/>      
+                </p:outputPanel>
+            </h:panelGrid>                  
+        </ui:repeat>    
+    </ui:define>
+</ui:composition>

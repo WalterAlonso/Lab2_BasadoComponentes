@@ -17,6 +17,8 @@ import com.losalpes.servicios.IServicioSeguridad;
 import com.losalpes.servicios.ServicioClienteMock;
 import com.losalpes.servicios.ServicioSeguridadMock;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ApplicationScoped;
 import javax.inject.Named;
 import javax.faces.bean.ManagedBean;
@@ -117,11 +119,16 @@ public class AdminClienteBean {
      * Agrega un nuevo cliente al sistema
      */
     public void agregarCliente() throws ClienteExistenteException {
+         try {
+    
         clientes.agregarCliente(cliente);
         usuario.setCliente(cliente);
         usuario.setNombre(cliente.getNumeroDocumento());
         usuarios.agregarUsuario(usuario);
-        cliente = new Cliente();
+         } catch (ClienteExistenteException ex) {
+            
+        }
+         cliente = new Cliente();
     }
 
     /**
