@@ -30,4 +30,5 @@ public interface IServicioSeguridad
      */
     public Usuario login(String nombre, String contraseña)throws AutenticacionException;
     public Usuario darUsuario(String nombreUsuario);
+    public void agregarUsuario(Usuario usuario);
 }

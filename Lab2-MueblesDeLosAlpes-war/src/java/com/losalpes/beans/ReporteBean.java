@@ -10,6 +10,7 @@ import com.losalpes.bos.DetalleCarroCompra;
 import com.losalpes.servicios.IServicioCompra;
 import com.losalpes.servicios.ServicioCompraMock;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Named;
 import javax.faces.bean.ApplicationScoped;
@@ -26,7 +27,16 @@ public class ReporteBean {
 
     private String numeroDocumento;
     private List<Compra> comprasCliente;
+    private Date fechaGeneracionComprasCliente;
 
+    public Date getFechaGeneracionComprasCliente() {
+        return fechaGeneracionComprasCliente;
+    }
+
+    public void setFechaGeneracionComprasCliente(Date fechaGeneracionComprasCliente) {
+        this.fechaGeneracionComprasCliente = fechaGeneracionComprasCliente;
+    }
+    
     @ManagedProperty("#{compraBean}")
     private CompraBean compra;  
 
@@ -57,6 +67,7 @@ public class ReporteBean {
     }
     
     public void buscarComprasCliente(){
+        this.fechaGeneracionComprasCliente = new Date();
         this.comprasCliente = new ArrayList<>();
         List<Compra> compras = compra.getCompra().darCompras();
          for (Compra item : compras) {

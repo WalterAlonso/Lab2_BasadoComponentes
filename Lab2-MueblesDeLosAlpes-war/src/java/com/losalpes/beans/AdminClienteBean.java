@@ -10,9 +10,12 @@ import com.losalpes.bos.Cliente;
 import com.losalpes.bos.Departamento;
 import com.losalpes.bos.Pais;
 import com.losalpes.bos.TipoDocumento;
+import com.losalpes.bos.Usuario;
 import com.losalpes.excepciones.ClienteExistenteException;
 import com.losalpes.servicios.IServicioCliente;
+import com.losalpes.servicios.IServicioSeguridad;
 import com.losalpes.servicios.ServicioClienteMock;
+import com.losalpes.servicios.ServicioSeguridadMock;
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.inject.Named;
@@ -35,10 +38,25 @@ public class AdminClienteBean {
      * Representa un nuevo cliente a ingresar
      */
     private Cliente cliente;
+    
+    /**
+     * 
+     */
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     /**
      * Relación con la interfaz que provee los servicios necesarios del cliente.
      */
     private IServicioCliente clientes;
+    
+    private IServicioSeguridad usuarios;
     /**
      * Variable para determinar si un botón se muestra o no
      */
@@ -46,7 +64,9 @@ public class AdminClienteBean {
 
     public AdminClienteBean() {
         cliente = new Cliente();
+        usuario = new Usuario();
         clientes = new ServicioClienteMock();
+        usuarios = new ServicioSeguridadMock();
         visible = false;
     }
 
@@ -98,6 +118,9 @@ public class AdminClienteBean {
      */
     public void agregarCliente() throws ClienteExistenteException {
         clientes.agregarCliente(cliente);
+        usuario.setCliente(cliente);
+        usuario.setNombre(cliente.getNumeroDocumento());
+        usuarios.agregarUsuario(usuario);
         cliente = new Cliente();
     }
 

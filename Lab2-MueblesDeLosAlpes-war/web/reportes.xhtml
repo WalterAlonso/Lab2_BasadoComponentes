@@ -12,8 +12,8 @@
         <p:growl id="msgs" showDetail="true" />
 
         <h3 style="margin-top:0">Reportes</h3>
-        <p:tabView>
-            <p:tab title="Ventas diarias por tipo mueble">
+       <p:tabView>
+       <!--      <p:tab title="Ventas diarias por tipo mueble">
                 filtros:
                 fecha inicio:
                 fecha fin:
@@ -28,7 +28,7 @@
                 tipo mueble:
                 Nombre:
 
-            </p:tab>
+            </p:tab>-->
             <p:tab title="Compras de cliente">
                 <h:form id="formComprasCliente">
                     <h:panelGrid id="grid" columns="3" columnClasses="resumenCompra_firstColumn,resumenCompra_secondColumn,resumenCompra_thirdColumn">
@@ -42,47 +42,16 @@
                         <p:messages  autoUpdate="true" id="msgNumeroDocumento" for="NumeroDocumento"  />                        
                     </h:panelGrid>
 
+                    <a href='javascript:window.print(); void 0;'>Imprimir reporte</a> 
 
- <!--<ui:repeat id="reporteComprasCliente" var="comprasClie" value="#{reporteBean.comprasCliente}">
-      <h:panelGrid columns="3" >                                
-            <p:outputPanel>
-                <h:outputText value="Fecha compra:" />
-                <h:outputText value="#{comprasClie.fechaCompra}" />
-            </p:outputPanel>                             
-            <p:outputPanel>
-                <h:outputText value="Valor:" />
-                  <h:outputText value="#{comprasClie.valor}" />
-            </p:outputPanel>   
-          <p:outputPanel>
-                <h:outputText value="Forma pago:" />
-                  <h:outputText value="#{comprasClie.formapago}" />
-            </p:outputPanel>   
-        </h:panelGrid>       
-       <p:dataTable
-id="reporteComprasClie"
-value="comprasClie.detalleCompra"
-var="comprasss"
-scrollable="false"
-scrollHeight="100px"
-paginator="true"
-paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-resizableColumns="true"
-rows="10">
-           
-            <p:column headerText="Referencia">
-            <h:outputText value="#{comprasss.mueble.referencia}" />
-</p:column>
-           
-           
-       </p:dataTable>
-     
-     
-  
- </ui:repeat>
-                    -->
-
-
-
+                    <h:panelGrid columns="1" >                                
+                        <center>
+                            <p:outputPanel>
+                                <h:outputText value="Fecha generacion:" />
+                                <h:outputText value="#{reporteBean.fechaGeneracionComprasCliente}" style="font-weight: bold"/>
+                            </p:outputPanel>                          
+                        </center>
+                    </h:panelGrid>       
 
                     <p:dataTable
                         id="reporteComprasCliente"
@@ -121,7 +90,7 @@ rows="10">
                                 </h:panelGrid>       
                             </ui:repeat>
                         </p:column>
-                    </p:dataTable>-->
+                    </p:dataTable>
                 </h:form>              
             </p:tab>
         </p:tabView>

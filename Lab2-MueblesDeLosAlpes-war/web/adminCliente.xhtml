@@ -178,13 +178,22 @@
 
                 <h:panelGrid columns="2" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
                     <h:outputLabel for="TxtEmail" value="Email"/>
-                    <h:inputText id="TxtEmail" size="20" maxlength="20" label="Email"
+                    <h:inputText id="TxtEmail" size="40" maxlength="50" label="Email"
                                  value="#{adminClienteBean.cliente.email}" required="true">
                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                     </h:inputText>
                     <h:message id="emailMsg" for="TxtEmail" />
                 </h:panelGrid>
 
+                 <h:panelGrid columns="2" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
+                    <h:outputLabel for="TxtClave" value="Clave"/>
+                    <h:inputText id="TxtClave" size="20" maxlength="20" label="Clave"
+                                 value="#{adminClienteBean.usuario.contraseña}" required="true">
+                        <f:validateLength minimum="1"/>
+                    </h:inputText>
+                    <h:message id="claveMsg" for="TxtClave" />
+                </h:panelGrid>
+                
                 <h:commandButton rendered="#{!adminClienteBean.visible}" value="Agregar" action="#{adminClienteBean.agregarCliente}" />
                 <h:commandButton rendered="#{adminClienteBean.visible}" value="Actualizar" action="#{adminClienteBean.actualizarCliente()}" />
                 <h:commandButton rendered="#{adminClienteBean.visible}" value="Eliminar" action="#{adminClienteBean.eliminarCliente(cliente)}" />

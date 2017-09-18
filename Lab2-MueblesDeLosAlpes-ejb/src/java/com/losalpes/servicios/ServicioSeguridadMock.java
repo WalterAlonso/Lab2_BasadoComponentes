@@ -99,6 +99,11 @@ public class ServicioSeguridadMock implements IServicioSeguridad
             if(usuario.getNombre().equals(nombreUsuario))
                 return usuario;
         }
-        return null;
+        return null;    
+    }
+    
+    @Override
+    public void agregarUsuario(Usuario usuario){
+        usuarios.add(usuario);
     }
 }

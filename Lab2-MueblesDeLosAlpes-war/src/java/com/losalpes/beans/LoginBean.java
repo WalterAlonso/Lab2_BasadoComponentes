@@ -18,6 +18,7 @@ import com.losalpes.servicios.IServicioSeguridad;
 import com.losalpes.servicios.ServicioSeguridadMock;
 import java.io.IOException;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -31,7 +32,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  */
 @Named(value = "loginBean")
-@SessionScoped
+@ApplicationScoped
 @ManagedBean
 public class LoginBean {
 
