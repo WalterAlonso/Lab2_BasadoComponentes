@@ -12,6 +12,7 @@
     <ui:param name="titulo" value="Catálogo de muebles" />
     <h:outputLabel for="TxtTitle" value="Catálogo de muebles" style="font-size:20px"/>
     <ui:define name="body">
+        <h:commandButton value = "Iniciar Sesión"  actionListener="#{homeBean.irIndex()}"/>      
         <ui:repeat var="mueble" value="#{homeBean.muebles}">
             <h:panelGrid columns="3" border="1" style="width:50%; border-color: black;" columnClasses="resumenCompra_firstColumn,resumenCompra_secondColumn,resumenCompra_thirdColumn">
 
@@ -33,8 +34,7 @@
                     <h:outputText value="#{mueble.precio}" style="font-weight: bold"/>
                 </p:outputPanel>
                 <p:outputPanel >
-                    <h:outputText value="Añadir Mueble" />
-                    <h:commandButton value = "Añadir Mueble"  actionListener="#{homeBean.agregarItem(mueble)}"/>      
+                    <h:commandButton value = "Añadir a Carro"  actionListener="#{homeBean.agregarItem(mueble)}"/>      
                 </p:outputPanel>
             </h:panelGrid>                  
         </ui:repeat>    

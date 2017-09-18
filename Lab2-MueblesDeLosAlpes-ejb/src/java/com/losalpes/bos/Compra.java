@@ -19,6 +19,7 @@ public class Compra {
     private int valor;    
     private java.util.Date fechaCompra;
     private List<DetalleCarroCompra> detalleCompra;
+
     private Cliente cliente;
   
     public Compra(FormaPago formaPago, int numeroOrden, int valor, java.util.Date fechaCompra, 
@@ -70,4 +71,7 @@ public class Compra {
         this.cliente = cliente;
     }
     
+    public List<DetalleCarroCompra> getDetalleCompra() {
+        return detalleCompra;
+    }
 }

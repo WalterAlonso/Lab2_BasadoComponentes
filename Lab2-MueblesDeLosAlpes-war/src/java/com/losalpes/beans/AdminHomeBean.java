@@ -29,4 +29,8 @@ public class AdminHomeBean {
     public String irAdminCatalogo() {
         return "adminCatalogo";
     }
+    
+    public String irAdminReportes() {
+        return "reportes";
+    }
 }
