@@ -45,11 +45,12 @@ public class ServicioClienteMock implements IServicioCliente {
 
         //Agrega los muebles del sistema
         clientes.add(new Cliente(TipoDocumento.Cedula, "102445126", "Pepito Perez", "4313022", "3154242542", "DG 85 82 28", Pais.Colombia, Departamento.Bogota, Ciudad.Bogota, "Ingeniero", "pepito@yahoo.com"));
+        clientes.add(new Cliente(TipoDocumento.Cedula, "1018445022", "Juan Perez", "4315740", "3123459876", "DG 123 45 67", Pais.Colombia, Departamento.Bogota, Ciudad.Bogota, "Ingeniero", "juan@yahoo.com"));
     }
     
     @Override
     public void agregarCliente(Cliente cliente) throws ClienteExistenteException {
-        Cliente clienteEncontrado = bucarCliente(cliente.getNumeroDocumento());
+        Cliente clienteEncontrado = buscarCliente(cliente.getNumeroDocumento());
         if (clienteEncontrado != null) {
             throw new ClienteExistenteException("Cliente con ese número de documento ya existe");
         }
@@ -68,13 +69,14 @@ public class ServicioClienteMock implements IServicioCliente {
 
     @Override
     public Cliente actualizarCliente(Cliente cliente) {
-        Cliente clienteEncontrado = bucarCliente(cliente.getNumeroDocumento());
+        Cliente clienteEncontrado = buscarCliente(cliente.getNumeroDocumento());
        return clienteEncontrado;
     }
     
-    private Cliente bucarCliente(String numeroDocumento) {
+    @Override
+    public Cliente buscarCliente(String numeroDocumento) {
         for(int e = 0;e<clientes.size();e++){
-            if(clientes.get(e).getNumeroDocumento() == numeroDocumento){
+            if(clientes.get(e).getNumeroDocumento().equals(numeroDocumento)){
                 return clientes.get(e);
             }
         }

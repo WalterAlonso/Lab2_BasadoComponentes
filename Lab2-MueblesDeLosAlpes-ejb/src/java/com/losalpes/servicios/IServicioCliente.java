@@ -22,4 +22,6 @@ public interface IServicioCliente {
     public void eliminarCliente(Cliente cliente);
     
     public Cliente actualizarCliente(Cliente cliente);
+    
+    public Cliente buscarCliente(String documento);
 }

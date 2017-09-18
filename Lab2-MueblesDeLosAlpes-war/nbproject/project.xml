@@ -6,6 +6,10 @@
             <name>Lab2-MueblesDeLosAlpes-war</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
+                <library dirs="200">
+                    <file>${libs.CopyLibs.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
                 <library dirs="100">
                     <file>${reference.Lab2-MueblesDeLosAlpes-ejb.dist}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>

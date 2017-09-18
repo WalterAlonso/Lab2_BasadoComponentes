@@ -39,10 +39,15 @@ public class AdminClienteBean {
      * Relación con la interfaz que provee los servicios necesarios del cliente.
      */
     private IServicioCliente clientes;
+    /**
+     * Variable para determinar si un botón se muestra o no
+     */
+    private boolean visible;
 
     public AdminClienteBean() {
         cliente = new Cliente();
-        clientes=new ServicioClienteMock();
+        clientes = new ServicioClienteMock();
+        visible = false;
     }
 
     //-----------------------------------------------------------
@@ -69,40 +74,83 @@ public class AdminClienteBean {
     /**
      * Devuelve una lista con todos los clientes del sistema
      *
-     * @return muebles Muebles del sistema
+     * @return clientes Clientes del sistema
      */
     public List<Cliente> getClientes() {
 
         return clientes.darClientes();
     }
 
+    /**
+     * Devuelve Variable para determinar si un botón se muestra o no
+     *
+     * @return
+     */
+    public boolean isVisible() {
+        return visible;
+    }
+
     //-----------------------------------------------------------
     // Métodos
     //-----------------------------------------------------------
     /**
-     * Agrega un nuevo mueble al sistema
+     * Agrega un nuevo cliente al sistema
      */
     public void agregarCliente() throws ClienteExistenteException {
         clientes.agregarCliente(cliente);
         cliente = new Cliente();
     }
-    
-    
+
     /**
-     * Agrega un nuevo mueble al sistema
+     * Eliminar un cliente del sistema
+     *
      * @param cliente
      */
     public void eliminarCliente(Cliente cliente) {
         clientes.eliminarCliente(cliente);
-}
-    
-    
+        cliente = new Cliente();
+    }
+
+    /**
+     * Actualizar un cliente del sistema
+     *
+     * @param cliente
+     */
+    public void actualizarCliente() {
+        clientes.actualizarCliente(cliente);
+        cliente = new Cliente();
+        visible = false;
+    }
+
+    /**
+     * Actualizar un cliente del sistema
+     *
+     * @param cliente
+     */
+    public void verCliente(Cliente cliente) {
+        this.cliente = cliente;
+        visible = true;
+    }
+
+    /**
+     * Buscar un cliente del sistema
+     *
+     */
+    public void buscarCliente() {
+        Cliente clienteB = clientes.buscarCliente(cliente.getNumeroDocumento());
+        if (clienteB != null) {
+            visible = true;
+            cliente = clienteB;
+        }
+
+    }
 
     /**
      * Elimina la información del mueble
      */
     public void limpiar() {
         cliente = new Cliente();
+        visible = false;
     }
 
     /**
@@ -119,8 +167,8 @@ public class AdminClienteBean {
         }
         return sitems;
     }
-   
-     /**
+
+    /**
      * Devuelve los tipos de documento
      *
      * @return sitems Tipos de documentos en el sistema
@@ -134,7 +182,7 @@ public class AdminClienteBean {
         }
         return sitems;
     }
-    
+
     /**
      * Devuelve los tipos de documento
      *
@@ -149,7 +197,7 @@ public class AdminClienteBean {
         }
         return sitems;
     }
-    
+
     /**
      * Devuelve los tipos de documento
      *
